@@ -47,7 +47,7 @@ class OnePage extends \yii\db\ActiveRecord
         ];
     }
 	
-	public function oneRecord($controller, $action)
+	public static function oneRecord($controller, $action)
     {
         $oneRecord = OnePage::find()->where(['controller'=>$controller, 'action'=>$action])->one();
 		$info = $oneRecord['text'];
