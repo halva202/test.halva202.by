@@ -36,6 +36,7 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Create sites', 'url' => ['/site/webdeveloper']],
 		/* ['label' => 'test', 'url' => 'https://jobs.tut.by', 'items' => [
             ['label' => 'email', 'url' => 'https://jobs.tut.by', 'items' => [
 				['label' => 'gmail', 'url' => ['/test/emailgmail']],

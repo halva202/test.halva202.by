@@ -13,6 +13,8 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 
+use app\models\OnePage;
+
 /**
  * Site controller
  */
@@ -209,5 +211,13 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+	
+	//////////////////////////////////////
+	public function actionWebdeveloper()
+    {
+		$info = OnePage::oneRecord($controller = 'site', $action = 'webdeveloper');
+		
+        return $this->render('web-developer', ['info' => $info,]);
     }
 }
