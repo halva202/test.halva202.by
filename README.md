@@ -1,2 +1,2 @@
-# yii2advancedMini
-almost ready site on yii2 with a minimum set of options
+# test version of halva202.by
+Сейчас, прежде чем что-то выложить на основной сайт, я тестирую тут.
