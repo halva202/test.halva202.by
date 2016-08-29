@@ -11,14 +11,14 @@ $this->title = 'Halva202';
 
         <p class="lead"><?= $phrasebook['introduction'] ?> <a href="https://github.com/halva202/test.halva202.by" target="_blank">here</a>.&nbsp;</p>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.halva202.by"><?= $phrasebook['visitMainSite'] ?> halva202.by</a></p>
+        <p><a class="btn btn-lg btn-success" href="http://www.halva202.by">halva202.by</a></p>
     </div>
 
     <div class="body-content">
 
         <div class="row">
             <div class="col-lg-4">
-                <h2>Web-developer</h2>
+                <h2><a href="/site/webdeveloper"><?= $phrasebook['web-developer'] ?></a></h2>
 
                 <p>I can create sites.</p>
 

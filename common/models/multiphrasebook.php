@@ -20,7 +20,8 @@ class multiphrasebook
 			// /menu
 			'hi'=>'Hi',
 			'introduction'=>'This is mini version of site about me. I do experiments with code here and then upload code to main site. Code of this site is available ',
-			'visitMainSite'=>'Visit my main site',
+			
+			'web-developer'=>'Web-developer',
 		];
 		return $phrasebook;
 	}
@@ -34,7 +35,8 @@ class multiphrasebook
 			// /menu
 			'hi'=>'Здравствуй',
 			'introduction'=>'Это миниверсия сайта обо мне. Сейчас, прежде чем что-то выложить на основной сайт, я тестирую тут. Код сайта в открытом доступе ',
-			'visitMainSite'=>'Перейти на мой главный сайт',
+			
+			'web-developer'=>'Веб-разработчик',
 		];
 		return $phrasebook;
 	}

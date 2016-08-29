@@ -88,8 +88,8 @@ AppAsset::register($this);
         <p class="pull-right">
 			&copy; Halva202 <?= date('Y') ?>
 			<br>
-			<a href="/set/language?language=ru"><img src="images/icons/russia_round_icon_64.png" alt="" /></a>
-			<a href="/set/language?language=en"><img src="images/icons/united_kingdom_round_icon_64.png" alt="" /></a>
+			<span class="badge"><a href="/set/language?language=ru">RU</a></span>
+			<span class="badge"><a href="/set/language?language=en">EN</a></span>
 		</p>
     </div>
 </footer>
