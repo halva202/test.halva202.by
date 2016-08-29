@@ -7,11 +7,11 @@ $this->title = 'Halva202';
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Hi!</h1>
+        <h1><?= $phrasebook['hi'] ?>!</h1>
 
-        <p class="lead">This is mini version of site about me. Сейчас, прежде чем что-то выложить на основной сайт, я тестирую тут. Код сайта в открытом доступе <a href="https://github.com/halva202/test.halva202.by" target="_blank">тут</a>.&nbsp;</p>
+        <p class="lead"><?= $phrasebook['introduction'] ?> <a href="https://github.com/halva202/test.halva202.by" target="_blank">here</a>.&nbsp;</p>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.halva202.by">Visit my main site halva202.by</a></p>
+        <p><a class="btn btn-lg btn-success" href="http://www.halva202.by"><?= $phrasebook['visitMainSite'] ?> halva202.by</a></p>
     </div>
 
     <div class="body-content">

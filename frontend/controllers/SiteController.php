@@ -14,6 +14,10 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 
 use app\models\OnePage;
+use common\models\language;
+use common\models\multiphrasebook;
+
+\Yii::$app->session->open();
 
 /**
  * Site controller
@@ -74,7 +78,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+		$phrasebook = multiphrasebook::getPhrasebook();
+        return $this->render('index',[
+			'phrasebook'=>$phrasebook,
+		]);
     }
 
     /**
@@ -216,8 +223,9 @@ class SiteController extends Controller
 	//////////////////////////////////////
 	public function actionWebdeveloper()
     {
-		$info = OnePage::oneRecord($controller = 'site', $action = 'webdeveloper');
-		
-        return $this->render('web-developer', ['info' => $info,]);
+		// $info = OnePage::oneRecord($controller = 'site', $action = 'webdeveloper');
+		$language = language::getLanguage();
+		if($language == 'en'){return $this->render('web-developer-en');}
+		if($language == 'ru'){return $this->render('web-developer-ru');}
     }
 }

@@ -10,6 +10,9 @@ use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 
+use common\models\multiphrasebook;
+$phrasebook = multiphrasebook::getPhrasebook();
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -35,8 +38,8 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'Create sites', 'url' => ['/site/webdeveloper']],
+        ['label' => $phrasebook['home'], 'url' => ['/site/index']],
+        ['label' => $phrasebook['createSites'], 'url' => ['/site/webdeveloper']],
 		/* ['label' => 'test', 'url' => 'https://jobs.tut.by', 'items' => [
             ['label' => 'email', 'url' => 'https://jobs.tut.by', 'items' => [
 				['label' => 'gmail', 'url' => ['/test/emailgmail']],
@@ -44,7 +47,7 @@ AppAsset::register($this);
 			]],
         ]],
         ['label' => 'About', 'url' => ['/site/about']], */
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => $phrasebook['contact'], 'url' => ['/site/contact']],
     ];
     /* if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
@@ -82,7 +85,12 @@ AppAsset::register($this);
 			halva202@gmail.com
 		</p>
 
-        <p class="pull-right">&copy; Halva202 <?= date('Y') ?></p>
+        <p class="pull-right">
+			&copy; Halva202 <?= date('Y') ?>
+			<br>
+			<a href="/set/language?language=ru"><img src="images/icons/russia_round_icon_64.png" alt="" /></a>
+			<a href="/set/language?language=en"><img src="images/icons/united_kingdom_round_icon_64.png" alt="" /></a>
+		</p>
     </div>
 </footer>
 
