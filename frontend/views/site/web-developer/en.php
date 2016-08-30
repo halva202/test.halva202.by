@@ -1,15 +1,3 @@
-<?php
-
-/* @var $this yii\web\View */
-
-use yii\helpers\Html;
-
-$this->title = 'Web-developer';
-$this->params['breadcrumbs'][] = $this->title;
-?>
-<div class="site-about">
-    <h1><?= Html::encode($this->title) ?></h1>
-
 <h1 style="text-align: center;"><span style="font-size:28px;">I create sites</span>
 </h1>
 <ul>
@@ -26,6 +14,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <p>Также работаю в команде (сайт <a href="http://cvr.by/" target="_blank">cvr.by</a>) с дизайнерами, верстальщиками, фотографами, контенщиками. Тут уже HTML, CSS применяется весьма эффективно.&nbsp;Так что с мегакрасочным&nbsp;сайтом также смогу помочь.
 </p>
 <p>Помимо разработки сайтов предоставляем услуги хостинга (инфа также на сайте <a href="http://cvr.by/hosting24">cvr.by</a>).
+</p>
+<p><span style="color:#FF0000;">Готов к сотрудничеству) </span>Обратите внимание: мне прежде всего нравится делать вещи, отвечающие за процесс (например, отправка почты, калькулятор, смена языка)
 </p>
 <h2 style="line-height: 20.8px;"><a id="createSite" name="createSite"><font color="#0782c1">Как сделать сайт</font></a>
 </h2>
@@ -59,6 +49,3 @@ $this->params['breadcrumbs'][] = $this->title;
 </p>
 <p>&nbsp;
 </p>
-
-
-</div>

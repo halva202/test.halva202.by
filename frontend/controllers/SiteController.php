@@ -225,7 +225,8 @@ class SiteController extends Controller
     {
 		// $info = OnePage::oneRecord($controller = 'site', $action = 'webdeveloper');
 		$language = language::getLanguage();
-		if($language == 'en'){return $this->render('web-developer-en');}
-		if($language == 'ru'){return $this->render('web-developer-ru');}
+		// if($language == 'en'){return $this->render('web-developer-en');}
+		// if($language == 'ru'){return $this->render('web-developer-ru');}
+		return $this->render('web-developer', ['language'=>$language,]);
     }
 }

@@ -81,8 +81,8 @@ AppAsset::register($this);
 
 <div class="alignCenter">
 	My translation: 
-	<a href="/set/language?language=ru"><img src="images/icons/russia_round_icon_64.png" alt="" /></a>
-	<a href="/set/language?language=en"><img src="images/icons/united_kingdom_round_icon_64.png" alt="" /></a>
+	<a href="/set/language?language=ru"><img src="/images/icons/russia_round_icon_64.png" alt="" /></a>
+	<a href="/set/language?language=en"><img src="/images/icons/united_kingdom_round_icon_64.png" alt="" /></a>
 </div>
 			
 <div id="google_translate_element" class="alignCenter"></div>
