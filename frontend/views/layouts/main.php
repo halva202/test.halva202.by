@@ -27,6 +27,7 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
+<?php include_once("analyticstracking.php") ?>
 
 <div class="wrap">
     <?php
@@ -78,6 +79,14 @@ AppAsset::register($this);
     </div>
 </div>
 
+<div class="alignCenter">
+	My translation: 
+	<a href="/set/language?language=ru"><img src="images/icons/russia_round_icon_64.png" alt="" /></a>
+	<a href="/set/language?language=en"><img src="images/icons/united_kingdom_round_icon_64.png" alt="" /></a>
+</div>
+			
+<div id="google_translate_element" class="alignCenter"></div>
+
 <footer class="footer">
     <div class="container">
 		<p class="pull-left">
@@ -87,9 +96,6 @@ AppAsset::register($this);
 
         <p class="pull-right">
 			&copy; Halva202 <?= date('Y') ?>
-			<br>
-			<span class="badge"><a href="/set/language?language=ru">RU</a></span>
-			<span class="badge"><a href="/set/language?language=en">EN</a></span>
 		</p>
     </div>
 </footer>

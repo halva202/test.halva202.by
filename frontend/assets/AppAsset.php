@@ -13,8 +13,11 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'css/test.css',
     ];
     public $js = [
+        'js/googleTranslateElementInit.js',
+        '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit',
     ];
     public $depends = [
         'yii\web\YiiAsset',
