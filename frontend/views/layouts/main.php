@@ -41,6 +41,7 @@ AppAsset::register($this);
     $menuItems = [
         ['label' => $phrasebook['home'], 'url' => ['/site/index']],
         ['label' => $phrasebook['createSites'], 'url' => ['/site/webdeveloper']],
+        ['label' => $phrasebook['tutor'], 'url' => ['/site/tutor']],
 		/* ['label' => 'test', 'url' => 'https://jobs.tut.by', 'items' => [
             ['label' => 'email', 'url' => 'https://jobs.tut.by', 'items' => [
 				['label' => 'gmail', 'url' => ['/test/emailgmail']],

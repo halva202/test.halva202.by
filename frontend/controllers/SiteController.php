@@ -229,4 +229,9 @@ class SiteController extends Controller
 		// if($language == 'ru'){return $this->render('web-developer-ru');}
 		return $this->render('web-developer', ['language'=>$language,]);
     }
+	
+	public function actionTutor()
+    {
+		return $this->render('tutor');
+    }
 }

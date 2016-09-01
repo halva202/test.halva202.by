@@ -28,7 +28,7 @@ $this->title = 'Halva202';
                 <p><a class="btn btn-default" href="http://www.upwork.com/o/profiles/users/_~0106dc02a6699ca661/">Resume on upwork.com &raquo;</a></p>
             </div>
             <div class="col-lg-4">
-                <h2><?= $phrasebook['tutor'] ?></h2>
+                <h2><a href="/site/tutor"><?= $phrasebook['tutor'] ?></a></h2>
 
                 <p><?= $phrasebook['tutor2'] ?></p>
 
