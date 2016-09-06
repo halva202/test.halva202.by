@@ -312,7 +312,7 @@ class SiteController extends Controller
 		
 		if($canSend == 'yes'){
 			$modelMail = new swiftmailplus();
-			$params = [
+			$parameters = [
 				'name' => $name,
 				'email' => $email,
 				'subject' => $subject,
@@ -320,8 +320,8 @@ class SiteController extends Controller
 			];
 			$data=[
 				'subject' => 'Письмо с сайта halva202.by (sample html5up-miniport)',
-				'viewOfLetter' => 'body-html5up-miniport',
-				'params' => $params,
+				'templateOfLetter' => 'body-html5up-miniport',
+				'parameters' => $parameters,
 			];
 			$modelMail->letter($data);
 			echo $name.', '.$phrasebook['messageAfterSending'];
