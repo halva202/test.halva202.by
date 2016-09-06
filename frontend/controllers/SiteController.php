@@ -17,6 +17,8 @@ use app\models\OnePage;
 use common\models\language;
 use common\models\multiphrasebook;
 
+use common\models\multiphrasebookForHomePage;
+
 \Yii::$app->session->open();
 
 /**
@@ -233,5 +235,102 @@ class SiteController extends Controller
 	public function actionTutor()
     {
 		return $this->render('tutor');
+    }
+	
+	public function actionPublic()
+    {
+		return $this->render('public');
+    }
+	
+	public function actionIndexhtml5upminiport()
+    {
+		$this->layout="/main-html5up-miniport";
+		
+		$phrasebookModel = new multiphrasebookForHomePage;
+		$phrasebook = $phrasebookModel->getPhrasebook();
+		
+		// email
+		$messageAfterSending = '';
+		if(isset($_POST['name'])){
+			$modelMail = new swiftmailer();
+			$parameters = [
+				'name' => $_POST['name'],
+				'email' => $_POST['email'],
+				'subject' => $_POST['subject'],
+				'message' => $_POST['message'],
+			];
+			$data=[
+				'subject' => 'Письмо с сайта halva202.by (sample html5up-miniport)',
+				'templateOfLetter' => 'body-html5up-miniport',
+				'parameters' => $parameters,
+			];
+			$modelMail->letter($data);
+			$messageAfterSending = $phrasebook['messageAfterSending'];
+		}
+		// /email
+		
+			return $this->render('index_html5upMiniport', [ 
+				'phrasebook' => $phrasebook,
+				'messageAfterSendingReal' => $messageAfterSending,
+				'md5' => md5(Yii::$app->request->post('string'))
+			]);
+    }
+	
+	public function actionEmailajax(){
+		
+		$phrasebookModel = new multiphrasebookForHomePage;
+		$phrasebook = $phrasebookModel->getPhrasebook();
+		
+		// проверяем валидность данных
+		
+		$canSend = 'yes'; // default - possibility to send email
+		
+		if(isset($_POST['name'])){
+			$name = htmlspecialchars($_POST['name']);
+			if($name==''){$canSend = 'no';}
+		}
+		else {$canSend = 'no';}
+		
+		if(isset($_POST['email'])){
+			$email = htmlspecialchars($_POST['email']);
+			if(!preg_match("/^[a-zA-Z0-9_\-.]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-.]+$/",$email)){$email='';}
+			if($email==''){$canSend = 'no';}
+		}
+		else {$canSend = 'no';}
+		
+		if(isset($_POST['subject'])){
+			$subject = htmlspecialchars($_POST['subject']);
+			if($subject==''){$canSend = 'no';}
+		}
+		else {$canSend = 'no';}
+		
+		if(isset($_POST['message'])){
+			$message = htmlspecialchars($_POST['message']);
+			if($message==''){$canSend = 'no';}
+		}
+		else {$canSend = 'no';}
+		
+		if($canSend == 'yes'){
+			$modelMail = new swiftmailplus();
+			$params = [
+				'name' => $name,
+				'email' => $email,
+				'subject' => $subject,
+				'message' => $message,
+			];
+			$data=[
+				'subject' => 'Письмо с сайта halva202.by (sample html5up-miniport)',
+				'viewOfLetter' => 'body-html5up-miniport',
+				'params' => $params,
+			];
+			$modelMail->letter($data);
+			echo $name.', '.$phrasebook['messageAfterSending'];
+		}
+		else{echo $phrasebook['messageBeforeSending'];}
+	}
+	
+	public function actionVolleyball()
+    {
+		return $this->render('volleyball');
     }
 }

@@ -42,6 +42,11 @@ AppAsset::register($this);
         ['label' => $phrasebook['home'], 'url' => ['/site/index']],
         ['label' => $phrasebook['createSites'], 'url' => ['/site/webdeveloper']],
         ['label' => $phrasebook['tutor'], 'url' => ['/site/tutor']],
+		['label' => 'menu', 'url' => '', 'items' => [
+            ['label' => 'index_html5up-miniport', 'url' => '/site/indexhtml5upminiport', ],
+            ['label' => 'volleyball', 'url' => '/site/volleyball', ],
+            ['label' => 'social networks', 'url' => '/site/public', ],
+        ]],
 		/* ['label' => 'test', 'url' => 'https://jobs.tut.by', 'items' => [
             ['label' => 'email', 'url' => 'https://jobs.tut.by', 'items' => [
 				['label' => 'gmail', 'url' => ['/test/emailgmail']],
