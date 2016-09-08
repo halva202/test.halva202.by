@@ -45,6 +45,7 @@ AppAsset::register($this);
 		['label' => 'menu', 'url' => '', 'items' => [
             ['label' => 'index_html5up-miniport', 'url' => '/site/indexhtml5upminiport', ],
             ['label' => 'volleyball', 'url' => '/site/volleyball', ],
+            ['label' => 'donation', 'url' => '/site/donation', ],
             ['label' => 'social networks', 'url' => '/site/public', ],
         ]],
 		/* ['label' => 'test', 'url' => 'https://jobs.tut.by', 'items' => [
@@ -89,6 +90,8 @@ AppAsset::register($this);
 	My translation: 
 	<a href="/set/language?language=ru"><img src="/images/icons/russia_round_icon_64.png" alt="" /></a>
 	<a href="/set/language?language=en"><img src="/images/icons/united_kingdom_round_icon_64.png" alt="" /></a>
+	<br>
+	P.S. The site is translated not fully (Сайт переведен не полностью)
 </div>
 			
 <div id="google_translate_element" class="alignCenter"></div>

@@ -16,6 +16,7 @@ use frontend\models\ContactForm;
 use app\models\OnePage;
 use common\models\language;
 use common\models\multiphrasebook;
+use common\models\swiftmailer;
 
 use common\models\multiphrasebookForHomePage;
 
@@ -72,6 +73,12 @@ class SiteController extends Controller
             ],
         ];
     }
+	
+	// без этой штуки письма ждут
+	public function beforeAction($action) {
+		$this->enableCsrfValidation = false;
+		return parent::beforeAction($action);
+	}
 
     /**
      * Displays homepage.
@@ -249,30 +256,8 @@ class SiteController extends Controller
 		$phrasebookModel = new multiphrasebookForHomePage;
 		$phrasebook = $phrasebookModel->getPhrasebook();
 		
-		// email
-		$messageAfterSending = '';
-		if(isset($_POST['name'])){
-			$modelMail = new swiftmailer();
-			$parameters = [
-				'name' => $_POST['name'],
-				'email' => $_POST['email'],
-				'subject' => $_POST['subject'],
-				'message' => $_POST['message'],
-			];
-			$data=[
-				'subject' => 'Письмо с сайта halva202.by (sample html5up-miniport)',
-				'templateOfLetter' => 'body-html5up-miniport',
-				'parameters' => $parameters,
-			];
-			$modelMail->letter($data);
-			$messageAfterSending = $phrasebook['messageAfterSending'];
-		}
-		// /email
-		
 			return $this->render('index_html5upMiniport', [ 
 				'phrasebook' => $phrasebook,
-				'messageAfterSendingReal' => $messageAfterSending,
-				'md5' => md5(Yii::$app->request->post('string'))
 			]);
     }
 	
@@ -311,7 +296,7 @@ class SiteController extends Controller
 		else {$canSend = 'no';}
 		
 		if($canSend == 'yes'){
-			$modelMail = new swiftmailplus();
+			$modelMail = new swiftmailer();
 			$parameters = [
 				'name' => $name,
 				'email' => $email,
@@ -332,5 +317,10 @@ class SiteController extends Controller
 	public function actionVolleyball()
     {
 		return $this->render('volleyball');
+    }
+	
+	public function actionDonation()
+    {
+		return $this->render('donation');
     }
 }

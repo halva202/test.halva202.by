@@ -166,7 +166,7 @@ use yii\helpers\Html;
 											
 											<div class="12u">
 												<ul class="actions">
-													<li><input type="button" value="<?= $phrasebook['sendMessage'] ?>" onclick="SendEmail();"> </li>
+													<li><input type="button" value="<?= $phrasebook['sendMessage'] ?>" onclick="sendEmail();"> </li>
 													<li><input type="reset" value="<?= $phrasebook['clearForm'] ?>" class="alt" /></li>
 												</ul>
 											</div>
@@ -229,22 +229,10 @@ use yii\helpers\Html;
 			<script src="/html5up-miniport/assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="html5up-miniport/assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="/html5up-miniport/assets/js/main.js"></script>
-			
-			<script>
-			function SendEmail(){
-				$.ajax({
-					type: "POST",
-					url: "/site/emailajax",
-					data: "name="+$('#name').val()+
-						"&email="+$('#email').val()+
-						"&subject="+$('#subject').val()+
-						"&message="+$('#message').val(),
-					success: function(response){
-						$('#responseEmail').html(response);
-					}
-				});
-			};
-			</script>
 
-	</body>
-</html>
+
+
+<?php
+$this->registerJsFile('/js/sendEmail.js',  ['position' => yii\web\View::POS_END]);
+//маркер конца строки, обязательно сразу, без пробелов и табуляции
+// $this->registerJs($script, yii\web\View::POS_READY);
