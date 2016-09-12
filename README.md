@@ -7,15 +7,12 @@
 
 After clonning (git clone  https://github.com/halva202/yii2.git) you should do:
 
-- создать базу данных yii2advanced
-localhost/phpMyAdmin:
-
-	yii2advanced
+- создать базу данных halva202_test (localhost/phpMyAdmin)
 
 - при помощи командной строки зайти в папку advanced, типо  cd /e/xampp/htdocs/repositories/github/halva202/yii2/advanced
 cmd cd: 
 
-- воспользоваться композером:
+- воспользоваться компоузером:
 composer update
 
 - написать следующее:
@@ -33,12 +30,10 @@ composer update
 
 
 
-p.s. не забыть настроить hosts и httpd-vhosts.conf(xampp)
+p.s.1 не забыть настроить hosts и httpd-vhosts.conf(xampp)
 
 p.s.2 в /common/config/main.php можно раскомментировать строчку с языком
 
-p.s.3 вроде как коммит d7d1 самый актуальный
+p.s.3 по идее надо поменять: 1)common/config/main-local.php 2) ящик(и) в common/config/main-local.php, common/models/swiftmailer.php
 
-p.s.4 по идее надо поменять: 1)common/config/main-local.php 2) ящик(и) в common/config/main-local.php, common/models/swiftmailer.php
-
-p.s. 5 не забыть поменять емэйл админа в params
+p.s.4 не забыть поменять емэйл админа в params
