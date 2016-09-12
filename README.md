@@ -9,7 +9,8 @@ After clonning (git clone  https://github.com/halva202/yii2.git) you should do:
 
 - создать базу данных halva202_test (localhost/phpMyAdmin)
 
-- при помощи командной строки зайти (cmd cd) в папку со скачанным репозиторием, типо  cd /e/xampp/htdocs/repositories/github/halva202/test.halva202.by
+- при помощи командной строки зайти (cmd cd) в папку со скачанным репозиторием, типо  
+cd /e/xampp/htdocs/repositories/github/halva202/test.halva202.by
 
 - написать следующее:
 
