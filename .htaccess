@@ -4,6 +4,15 @@
 </IfModule>
  
 <IfModule mod_rewrite.c>
+
+	
+	#samples
+	RewriteCond %{REQUEST_URI} ^/(samples)
+	#RewriteCond %{REQUEST_URI} samples$
+	RewriteRule ^.*$ samples/test.php [L]
+	#RewriteRule ^samples/img/(.*)$ samples/img/$1 [L]
+	#RewriteRule ^samples/.*$ samples/ [L]
+
     # deal with admin first
     RewriteCond %{REQUEST_URI} ^/(admin)
     RewriteRule ^admin/assets/(.*)$ backend/web/assets/$1 [L]
