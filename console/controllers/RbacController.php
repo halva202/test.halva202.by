@@ -1,5 +1,5 @@
 <?php
-namespace console/controllers;
+namespace console\controllers;
 
 use Yii;
 use yii\console\Controller;
@@ -9,31 +9,32 @@ class RbacController extends Controller
     public function actionInit()
     {
         $auth = Yii::$app->authManager;
+        $auth->removeAll(); //удаляем старые данные
 
-        // add "createPost" permission
+        // добавляем разрешение "createPost"
         $createPost = $auth->createPermission('createPost');
         $createPost->description = 'Create a post';
         $auth->add($createPost);
 
-        // add "updatePost" permission
+        // добавляем разрешение "updatePost"
         $updatePost = $auth->createPermission('updatePost');
         $updatePost->description = 'Update post';
         $auth->add($updatePost);
 
-        // add "author" role and give this role the "createPost" permission
+        // добавляем роль "author" и даём роли разрешение "createPost"
         $author = $auth->createRole('author');
         $auth->add($author);
         $auth->addChild($author, $createPost);
 
-        // add "admin" role and give this role the "updatePost" permission
-        // as well as the permissions of the "author" role
+        // добавляем роль "admin" и даём роли разрешение "updatePost"
+        // а также все разрешения роли "author"
         $admin = $auth->createRole('admin');
         $auth->add($admin);
         $auth->addChild($admin, $updatePost);
         $auth->addChild($admin, $author);
 
-        // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
-        // usually implemented in your User model.
+        // Назначение ролей пользователям. 1 и 2 это IDs возвращаемые IdentityInterface::getId()
+        // обычно реализуемый в модели User.
         $auth->assign($author, 2);
         $auth->assign($admin, 1);
     }
