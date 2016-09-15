@@ -46,7 +46,8 @@ AppAsset::register($this);
             ['label' => 'index_html5up-miniport', 'url' => '/site/indexhtml5upminiport', ],
             ['label' => 'volleyball', 'url' => '/site/volleyball', ],
             ['label' => 'donation', 'url' => '/site/donation', ],
-            ['label' => 'social networks', 'url' => '/site/public', ],
+            ['label' => 'social networks for localhost', 'url' => '/site/public', ],
+            ['label' => 'Go:)', 'url' => '/site/go', ],
         ]],
 		/* ['label' => 'test', 'url' => 'https://jobs.tut.by', 'items' => [
             ['label' => 'email', 'url' => 'https://jobs.tut.by', 'items' => [
