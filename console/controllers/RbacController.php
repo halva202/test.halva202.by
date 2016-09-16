@@ -35,7 +35,28 @@ class RbacController extends Controller
 
         // Назначение ролей пользователям. 1 и 2 это IDs возвращаемые IdentityInterface::getId()
         // обычно реализуемый в модели User.
-        $auth->assign($author, 2);
-        $auth->assign($admin, 1);
+        // $auth->assign($author, 2);
+        // $auth->assign($admin, 1);
+		
+
+
+// add the rule
+$rule = new \common\components\rbac\AuthorRule;
+$auth->add($rule);
+
+// добавляем разрешение "updateOwnPost" и привязываем к нему правило.
+$updateOwnPost = $auth->createPermission('updateOwnPost');
+$updateOwnPost->description = 'Update own post';
+$updateOwnPost->ruleName = $rule->name;
+$auth->add($updateOwnPost);
+
+// "updateOwnPost" будет использоваться из "updatePost"
+$auth->addChild($updateOwnPost, $updatePost);
+
+// разрешаем "автору" обновлять его посты
+$auth->addChild($author, $updateOwnPost);
+
+
+
     }
 }

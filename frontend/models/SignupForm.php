@@ -41,7 +41,7 @@ class SignupForm extends Model
      *
      * @return User|null the saved model or null if saving fails
      */
-    public function signup()
+    /* public function signup()
     {
         if (!$this->validate()) {
             return null;
@@ -52,12 +52,28 @@ class SignupForm extends Model
         $user->email = $this->email;
         $user->setPassword($this->password);
         $user->generateAuthKey();
-		
-        // the following three lines were added:
-        // $auth = \Yii::$app->authManager;
-        // $authorRole = $auth->getRole('author');
-        // $auth->assign($authorRole, $user->getId());
         
         return $user->save() ? $user : null;
+    } */
+	
+	public function signup()
+{
+    if ($this->validate()) {
+        $user = new User();
+        $user->username = $this->username;
+        $user->email = $this->email;
+        $user->setPassword($this->password);
+        $user->generateAuthKey();
+        $user->save(false);
+
+        // нужно добавить следующие три строки:
+        $auth = \Yii::$app->authManager;
+        $authorRole = $auth->getRole('author');
+        $auth->assign($authorRole, $user->getId());
+
+        return $user;
     }
+
+    return null;
+}
 }

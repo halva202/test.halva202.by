@@ -323,4 +323,30 @@ class SiteController extends Controller
     {
 		return $this->render('donation');
     }
+	
+	public function actionRbac()
+    {
+		$group = 'rbac';
+		$rule = 'no';
+		$rule2 = 'no';
+		
+		if (!Yii::$app->user->isGuest) {
+			$group = Yii::$app->user->identity->group;
+			if (\Yii::$app->user->can('createPost')) {
+				$rule = 'createPost';
+			}
+			
+			$post = 1;
+			if (\Yii::$app->user->can('updatePost', ['post' => $post])) {
+				$rule2 = 'update post';
+			}
+		}
+		
+		$info = [
+			'group' => $group,
+			'rule' => $rule,
+			'rule2' => $rule2,
+		];
+		return $this->render('rbac', ['info' => $info]);
+    }
 }
