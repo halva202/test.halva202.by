@@ -48,6 +48,8 @@ AppAsset::register($this);
             ['label' => 'donation', 'url' => '/site/donation', ],
             ['label' => 'social networks', 'url' => '/site/public', ],
             ['label' => 'rbac', 'url' => '/site/rbac', ],
+            ['label' => 'soc', 'url' => '/site/soc', ],
+            ['label' => 'soc1', 'url' => '/site/soc1', ],
         ]],
 		/* ['label' => 'test', 'url' => 'https://jobs.tut.by', 'items' => [
             ['label' => 'email', 'url' => 'https://jobs.tut.by', 'items' => [

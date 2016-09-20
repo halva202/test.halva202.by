@@ -14,6 +14,7 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 
 use app\models\OnePage;
+use app\models\UserNetwork;
 use common\models\language;
 use common\models\multiphrasebook;
 use common\models\swiftmailer;
@@ -179,6 +180,32 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+	
+	public function actionSignupthrunetwork()
+    {
+		if(isset($_POST['token']) and isset($_SERVER['HTTP_HOST'])){
+			$nw = file_get_contents('http://ulogin.ru/token.php?token=' . $_POST['token'] . '&host=' . $_SERVER['HTTP_HOST']);
+			$user_nw = json_decode($nw, true);
+			if($user_nw['network'] == 'vkontakte'){
+				// insert
+				$userNetwork = new UserNetwork;
+				$userNetwork->IDvkontakte = $user_nw['identity'];
+				$userNetwork->username = $user_nw['identity'];
+				$userNetwork->email = $user_nw['identity'];
+				$userNetwork->save();
+				// login
+				$user = \common\models\User::find()->where(['IDvkontakte'=>$user_nw['identity']])->one();
+				if(!empty($user)){
+					Yii::$app->user->login($user);
+				}
+			}
+		}
+		// return $this->render('network');
+		return $this->redirect(['/site/network',]);
+		
+		// echo 'good';
+		// return $this->render('signup-thru-network');
+	}
 
     /**
      * Requests password reset.
@@ -338,6 +365,7 @@ class SiteController extends Controller
 			
 			$post = 1;
 			if (\Yii::$app->user->can('updatePost', ['post' => $post])) {
+			// if (\Yii::$app->user->can('updatePost', ['post' => 'post-test'])) {
 				$rule2 = 'update post';
 			}
 		}
@@ -348,5 +376,41 @@ class SiteController extends Controller
 			'rule2' => $rule2,
 		];
 		return $this->render('rbac', ['info' => $info]);
+    }
+	
+	public function actionSoc()
+    {
+		$user = \common\models\User::find()->where(['email'=>'test@mail.com1'])->one();
+		// var_dump($user);
+        if(!empty($user)){
+            Yii::$app->user->login($user);
+		}
+		// echo'good';
+		
+		
+		return $this->render('soc');
+    }
+	
+	public function actionSoc1()
+    {
+		return $this->render('soc1');
+    }
+	public function actionSoc2()
+    {
+		return $this->render('soc2');
+    }
+	public function actionNetwork()
+    {
+		if(isset($_POST['token']) and isset($_SERVER['HTTP_HOST'])){
+			$nw = file_get_contents('http://ulogin.ru/token.php?token=' . $_POST['token'] . '&host=' . $_SERVER['HTTP_HOST']);
+			$user_nw = json_decode($nw, true);
+			if($user_nw['network'] == 'vkontakte'){
+				$user = \common\models\User::find()->where(['IDvkontakte'=>$user_nw['identity']])->one();
+				if(!empty($user)){
+					Yii::$app->user->login($user);
+				}
+			}
+		}
+		return $this->render('network');
     }
 }

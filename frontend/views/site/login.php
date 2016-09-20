@@ -12,6 +12,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>
+	
+<script src="//ulogin.ru/js/ulogin.js"></script>
+<div id="uLogin" data-ulogin="display=small;theme=classic;fields=first_name,last_name;providers=facebook,vkontakte,odnoklassniki,twitter,googleplus,google,yandex,instagram,linkedin;hidden=other;redirect_uri=http%3A%2F%2Ftest.halva202.by.gh%2Fsite%2Fnetwork;mobilebuttons=0;"></div>	
 
     <p>Please fill out the following fields to login:</p>
 
