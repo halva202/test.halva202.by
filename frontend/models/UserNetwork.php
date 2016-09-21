@@ -15,12 +15,15 @@ class UserNetwork extends \yii\db\ActiveRecord
     {
         return [
             // [['username', 'email', 'group', 'IDvkontakte', 'auth_key', 'password_hash', 'created_at', 'updated_at'], 'required'],
+			// [['username', 'email'], 'required'],
             // [['group', 'status', 'created_at', 'updated_at'], 'integer'],
             // [['username', 'email', 'password_hash', 'password_reset_token'], 'string', 'max' => 255],
-            [['IDvkontakte'], 'string', 'max' => 300],
+			[['username', 'email'], 'string', 'max' => 255],
+            [['IDvkontakte'], 'string', 'max' => 255],
             // [['auth_key'], 'string', 'max' => 32],
-            // [['username'], 'unique'],
-            // [['email'], 'unique'],
+            [['username'], 'unique'],
+            [['email'], 'unique'],
+            [['IDvkontakte'], 'unique'],
             // [['password_reset_token'], 'unique'],
         ];
     }

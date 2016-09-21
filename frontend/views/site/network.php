@@ -8,6 +8,11 @@ $this->title = 'Network';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">
+	
+	<?php if(!\Yii::$app->user->isGuest): ?>
+		<h4> <a href="/userprofile/view?id=<?= Yii::$app->user->identity->id ?>"><?= Yii::$app->user->identity->username ?></a>, hi! </h4>
+	<?php endif; ?>
+	
     <h1><?= Html::encode($this->title) ?></h1>
 	
 	<h4> Информация, которая становится доступной сайту / приложению после авторизации через социальную сеть. </h4>

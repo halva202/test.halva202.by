@@ -187,24 +187,25 @@ class SiteController extends Controller
 			$nw = file_get_contents('http://ulogin.ru/token.php?token=' . $_POST['token'] . '&host=' . $_SERVER['HTTP_HOST']);
 			$user_nw = json_decode($nw, true);
 			if($user_nw['network'] == 'vkontakte'){
-				// insert
-				$userNetwork = new UserNetwork;
-				$userNetwork->IDvkontakte = $user_nw['identity'];
-				$userNetwork->username = $user_nw['identity'];
-				$userNetwork->email = $user_nw['identity'];
-				$userNetwork->save();
-				// login
+				// если есть user с таким id
 				$user = \common\models\User::find()->where(['IDvkontakte'=>$user_nw['identity']])->one();
 				if(!empty($user)){
 					Yii::$app->user->login($user);
 				}
+				else {
+					// insert
+					$userNetwork = new UserNetwork;
+					$userNetwork->IDvkontakte = $user_nw['identity'];
+					$userNetwork->save();
+					
+					$user = \common\models\User::find()->where(['IDvkontakte'=>$user_nw['identity']])->one();
+					if(!empty($user)){
+						Yii::$app->user->login($user);
+					}
+				}
 			}
 		}
-		// return $this->render('network');
-		return $this->redirect(['/site/network',]);
-		
-		// echo 'good';
-		// return $this->render('signup-thru-network');
+		return $this->redirect(['/site/index2',]);
 	}
 
     /**
@@ -412,5 +413,9 @@ class SiteController extends Controller
 			}
 		}
 		return $this->render('network');
+    }
+	public function actionIndex2()
+    {
+		return $this->render('index2');
     }
 }
