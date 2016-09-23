@@ -3,14 +3,15 @@
 namespace frontend\controllers;
 
 use Yii;
-use app\models\UserNetwork;
+use app\models\UserProfile;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
- * UserprofileController implements the CRUD actions for UserNetwork model.
+ * UserprofileController implements the CRUD actions for UserProfile model.
  */
 class UserprofileController extends Controller
 {
@@ -26,17 +27,28 @@ class UserprofileController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+			'access' => [
+				'class' => AccessControl::className(),
+                'only' => ['index'],
+				'rules' => [
+					[
+						'actions' => ['index'],
+						'allow' => true,
+						'roles' => ['admin'],
+					],
+				],
+			],
         ];
     }
 
     /**
-     * Lists all UserNetwork models.
+     * Lists all UserProfile models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => UserNetwork::find(),
+            'query' => UserProfile::find(),
         ]);
 
         return $this->render('index', [
@@ -45,25 +57,28 @@ class UserprofileController extends Controller
     }
 
     /**
-     * Displays a single UserNetwork model.
+     * Displays a single UserProfile model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+		if(\Yii::$app->user->identity->id == $id){
+			return $this->render('view', [
+				'model' => $this->findModel($id),
+			]);
+		}
+		else{echo 'you should visit other page)';}
     }
 
     /**
-     * Creates a new UserNetwork model.
+     * Creates a new UserProfile model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new UserNetwork();
+        $model = new UserProfile();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +90,7 @@ class UserprofileController extends Controller
     }
 
     /**
-     * Updates an existing UserNetwork model.
+     * Updates an existing UserProfile model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -87,14 +102,20 @@ class UserprofileController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('update', [
+            /* return $this->render('update', [
                 'model' => $model,
-            ]);
+            ]); */
+			if(\Yii::$app->user->identity->id == $id){
+				return $this->render('update', [
+					'model' => $model,
+				]);
+			}
+			else{echo 'you should visit other page)';}
         }
     }
 
     /**
-     * Deletes an existing UserNetwork model.
+     * Deletes an existing UserProfile model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -103,19 +124,19 @@ class UserprofileController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['/site/index2']);
     }
 
     /**
-     * Finds the UserNetwork model based on its primary key value.
+     * Finds the UserProfile model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return UserNetwork the loaded model
+     * @return UserProfile the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = UserNetwork::findOne($id)) !== null) {
+        if (($model = UserProfile::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

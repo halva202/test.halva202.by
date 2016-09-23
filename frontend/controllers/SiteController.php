@@ -14,7 +14,7 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 
 use app\models\OnePage;
-use app\models\UserNetwork;
+use app\models\UserProfile;
 use common\models\language;
 use common\models\multiphrasebook;
 use common\models\swiftmailer;
@@ -189,23 +189,26 @@ class SiteController extends Controller
 			if($user_nw['network'] == 'vkontakte'){
 				// если есть user с таким id
 				$user = \common\models\User::find()->where(['IDvkontakte'=>$user_nw['identity']])->one();
+				$message = '';
 				if(!empty($user)){
+					$message = 'Вы уже регистрировались через данную социальную сеть.';
 					Yii::$app->user->login($user);
 				}
 				else {
 					// insert
-					$userNetwork = new UserNetwork;
-					$userNetwork->IDvkontakte = $user_nw['identity'];
-					$userNetwork->save();
+					$UserProfile = new UserProfile;
+					$UserProfile->IDvkontakte = $user_nw['identity'];
+					$UserProfile->save();
 					
 					$user = \common\models\User::find()->where(['IDvkontakte'=>$user_nw['identity']])->one();
 					if(!empty($user)){
+						$message = 'Вы успешно зарегистрированы.';
 						Yii::$app->user->login($user);
 					}
 				}
 			}
 		}
-		return $this->redirect(['/site/index2',]);
+		return $this->redirect(['/site/index2?message='.$message,]);
 	}
 
     /**

@@ -6,8 +6,9 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\UserNetwork */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'User Networks', 'url' => ['index']];
+// $this->title = $model->id;
+$this->title = 'Profile';
+// $this->params['breadcrumbs'][] = ['label' => 'User Networks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-network-view">
@@ -28,17 +29,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            // 'id',
             'username',
             'email:email',
-            'group',
+            // 'group',
             'IDvkontakte',
-            'auth_key',
-            'password_hash',
-            'password_reset_token',
-            'status',
-            'created_at',
-            'updated_at',
+            // 'auth_key',
+            // 'password_hash',
+            // 'password_reset_token',
+            // 'status',
+            // 'created_at',
+            // 'updated_at',
         ],
     ]) ?>
 
