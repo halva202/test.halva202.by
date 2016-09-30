@@ -102,9 +102,6 @@ class UserprofileController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            /* return $this->render('update', [
-                'model' => $model,
-            ]); */
 			if(\Yii::$app->user->identity->id == $id){
 				return $this->render('update', [
 					'model' => $model,
