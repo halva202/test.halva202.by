@@ -421,4 +421,8 @@ class SiteController extends Controller
     {
 		return $this->render('index2');
     }
+	public function actionBootstrap()
+    {
+		return $this->render('bootstrap');
+    }
 }
