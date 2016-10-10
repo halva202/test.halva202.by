@@ -323,4 +323,9 @@ class SiteController extends Controller
     {
 		return $this->render('donation');
     }
+	
+	public function actionFtp()
+    {
+		return $this->render('ftp');
+    }
 }

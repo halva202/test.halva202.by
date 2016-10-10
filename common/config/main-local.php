@@ -29,5 +29,17 @@ return [
 				'encryption' => 'ssl', */
 			],
         ],
+		
+		/* 'ftp' => [
+            'class' => '\gftp\FtpComponent',
+            // 'connectionString' => 'ftp://a9113564:Share123@share202.comli.com:21',
+			'protocol' => \gftp\FtpProtocol::FTPS,
+            'user' => 'a9113564',
+            'pass' => 'Share123',
+            'host' => 'share202.comli.com',
+            'port' => 2121,
+            'timeout' => 120,
+            'passive' => false
+        ] */
     ],
 ];

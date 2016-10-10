@@ -47,6 +47,7 @@ AppAsset::register($this);
             ['label' => 'volleyball', 'url' => '/site/volleyball', ],
             ['label' => 'donation', 'url' => '/site/donation', ],
             ['label' => 'social networks', 'url' => '/site/public', ],
+            ['label' => 'ftp', 'url' => '/site/ftp', ],
         ]],
 		/* ['label' => 'test', 'url' => 'https://jobs.tut.by', 'items' => [
             ['label' => 'email', 'url' => 'https://jobs.tut.by', 'items' => [
