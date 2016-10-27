@@ -44,6 +44,18 @@ $ftp_server = "share202.comli.com";
 $open = ftp_connect($ftp_server) or die("Не удалось установить соединение с $ftp_server"); 
 if (!ftp_login($open, "a9113564", "Share123")) exit("Не могу соединиться");
 // ftp_mkdir($open,"test"); //Создали папку "test". 
-$site = ftp_nlist($open,""); 
-$d = 7;
-for ($i = 0; $i < $d; $i++) echo $site[$i].'<br>'; 
+
+// $site = ftp_nlist($open,""); 
+// $d = 7;
+// for ($i = 0; $i < $d; $i++) echo $site[$i].'<br>'; 
+
+$remote_file = 'test/smile_rem_im.jpg';
+$file = 'images/smile.jpg';
+
+if (ftp_put($open, $remote_file, $file, FTP_ASCII)) {
+ echo "$file успешно загружен на сервер\n";
+} else {
+ echo "Не удалось загрузить $file на сервер\n";
+}
+
+ftp_close($open); //Закрыли поток 
