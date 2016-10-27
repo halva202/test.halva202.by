@@ -20,7 +20,8 @@
         "yiisoft/yii2-swiftmailer": "*",
 		"skeeks/yii2-ckeditor": "*",
 		"hguenot/yii2-gftp": "*",
-		"yii2mod/yii2-ftp": "*"
+		"yii2mod/yii2-ftp": "*",
+		"himiklab/yii2-recaptcha-widget" : "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

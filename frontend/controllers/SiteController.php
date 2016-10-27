@@ -328,4 +328,9 @@ class SiteController extends Controller
     {
 		return $this->render('ftp');
     }
+	
+	public function actionRecaptcha()
+    {
+		return $this->render('recaptcha');
+    }
 }
